@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pedido para Marília 💙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul-escuro: #0D1B2A;
+      --azul-principal: #1B263B;
+      --azul-claro: #415A77;
+      --verde: #2ecc71;
+      --vermelho: #e74c3c;
+      --branco: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, var(--azul-escuro), var(--azul-principal), var(--azul-claro));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      width: 90%;
+      max-width: 450px;
+      height: 400px;
+      position: relative;
+    }
+
+    h1 {
+      color: var(--branco);
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+    }
+
+    .buttons {
+      position: relative;
+      width: 100%;
+      height: 100px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      position: absolute;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    #sim {
+      left: 25%;
+      bottom: 0;
+      background-color: var(--verde);
+    }
+
+    #sim:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px var(--verde);
+    }
+
+    #nao {
+      left: 60%;
+      bottom: 0;
+      background-color: var(--vermelho);
+    }
+
+    #nao:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px var(--vermelho);
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: up 1.2s ease forwards;
+      pointer-events: none;
+    }
+
+    @keyframes up {
+      0% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -200px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      margin-top: 30px;
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 12px 28px;
+      }
+
+      iframe {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Marília Santiago, deixa eu amar você!</h1>
+
+    <div class="buttons">
+      <button id="sim">Sim 💖</button>
+      <button id="nao">Não</button>
+    </div>
+    
+    <!-- Música com vídeo visível -->
+    <div style="margin-top: 20px;">
+      <iframe width="100%" height="200" src="https://www.youtube.com/embed/NY5-UdFxMnA?start=15&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    const btnNao = document.getElementById('nao');
+    const btnSim = document.getElementById('sim');
+    const container = document.querySelector('.container');
+
+    btnNao.addEventListener('mouseenter', () => {
+      const maxX = container.clientWidth - btnNao.offsetWidth;
+      const maxY = container.clientHeight - btnNao.offsetHeight - 60;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      btnNao.style.left = `${randomX}px`;
+      btnNao.style.top = `${randomY}px`;
+    });
+
+    btnSim.addEventListener('click', () => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '❤️';
+      heart.style.left = '50%';
+      heart.style.top = '50%';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 1200);
+
+      setTimeout(() => {
+        alert('Agora é oficial! Te vivo minha princesa! 💙');
+      }, 500);
+    });
+  </script>
+</body>
+</html>
